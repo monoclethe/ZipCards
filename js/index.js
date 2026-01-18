@@ -42,7 +42,7 @@ const deleteSet = document.getElementById("deleteSet");
 
 //global variables
 var flipDuration = 1000;
-var sets;
+var sets = {};
 var activeSet = "none";
 var editing = false;
 var saveSetLength;
