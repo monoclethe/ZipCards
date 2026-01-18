@@ -1,0 +1,196 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+body {
+    color: white;
+    background-color: #080810;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+header {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    background-color: #101020;
+    border-bottom: 2px solid #202040;
+    font-size: 24px;
+    font-weight: bold;
+    * {
+        display: inline-block;
+    }
+}
+.box {
+    background-color: #101020;
+    border: 2px solid #202040;
+    margin: 5px;
+    padding: 5px;
+}
+table {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+#nav td {
+    border: 2px solid #202040;
+    transition-duration: 0.1s;
+    user-select: none;
+}
+
+table {
+    table-layout: fixed;
+}
+
+#nav td:hover, li:hover {
+    letter-spacing: 2px;
+    background-color: #404080;
+}
+#nav td:active, li:active {
+    letter-spacing: 0px;
+}
+
+#sidemenu, #mainarea {
+    vertical-align: top;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+li {
+    padding: 5px;
+    transition-duration: 0.05s;
+    user-select: none;
+}
+li:not(:last-child) {
+    border-bottom: 2px solid #202040;
+}
+.content {
+  flex: 1;
+}
+
+footer {
+    text-align: center;
+    margin: 0;
+    border: none;
+    background-color: #101020;
+    border-top: 2px solid #202040;
+    padding: 5px;
+}
+
+#card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    background-color: white;
+    aspect-ratio: 5 / 3;
+    margin: auto;
+    color: black;
+    border: 5px solid #ccc;
+    font-weight: bold;
+    inline-size: 50%;
+    overflow: auto;
+}
+
+a {
+    color: #88f;
+}
+
+select, input, button {
+    background-color: #101020;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border: 2px solid #202040;
+}
+button {
+    transition: letter-spacing linear 0.05s;
+}
+button:hover {
+    background-color: #404080;
+    letter-spacing: 2px;
+}
+button:active {
+    letter-spacing: 0px;
+}
+
+.buttonImg {
+    width: 48px;
+    filter: invert();
+}
+
+.alignRow {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#titleScreen, #changelogScreen, #statsScreen, #setsScreen {
+    display: none;
+}
+
+.setIcon {
+    box-sizing: border-box;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border: 2px solid #202040;
+    background-color: #101020;
+    color: white;
+    font-size: 400%;
+    user-select: none;
+}
+
+.iconGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 100px);
+    gap: 8px;
+    justify-content: center;
+}
+
+#editTable {
+    margin-top: 5px;
+}
+#editTable td {
+    border: 1px solid #404080;
+    background-color: #202040;
+}
+
+#edit {
+    margin-top: 5px;
+    display: none;
+}
+
+#playSetScreen {
+    display: none;
+}
+
+#tooltip {
+    position: absolute;
+    display: none;
+}
+
+#editSetPopup {
+    text-align: center;
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 50vw;
+    max-width: 400px;
+    left: calc(calc(100vw - min(50vw, 400px)) / 2);
+    top: 200px;
+    display: none;
+}
+
+#editPreview {
+    margin: auto;
+}

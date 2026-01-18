@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zipcards</title>
+    <link rel="icon" type="image/png" href="/img/icon.png">
+    <link href="css/index.css" rel="stylesheet">
+    <script src="js/index.js" defer></script>
+</head>
+<body>
+    <header>
+        <img src="img/icon.png" height="32px" style="margin-right: 5px">
+        Zipcards
+    </header>
+    <div class="content">
+        <table id="mainSection">
+            <tbody>
+                <tr>
+                    <td id="sidemenu">
+                        <div class="box" style="padding: 0">
+                            <ul>
+                                <li id="titleButton">Title</li>
+                                <li id="changelogButton">Changelog</li>
+                                <li id="setsButton">Flashcard Sets</li>
+                                <li id="statsButton">Statistics</li>
+                            </ul>
+                        </div>
+                    </td>
+                    <td colspan="3" id="mainarea">
+                        <div class="box">
+                            <div id="titleScreen">
+                                <h1>Welcome</h1>
+                                <p>Welcome to Zipcards! See the menu to the left to navigate this tool. Some settings are listed below.</p>
+                                <h2>Settings</h2>
+                                <p>Screen on launch:
+                                    <select id="launchScreenSelect">
+                                        <option value="title">Title</option>
+                                        <option value="changelog">Changelog</option>
+                                        <option value="sets">Flashcard Sets</option>
+                                        <option value="stats">Statistics</option>
+                                    </select>
+                                </p>
+                                <p class="alignRow">
+                                    Card flip duration (ms):
+                                    <input type="range" id="flipDurationRange" value="1000" min="1" max="2000"><span id="flipDurationDisplay">1000</span>
+                                </p>
+                            </div>
+                            <div id="changelogScreen">
+                                <h1>Changelog</h1>
+                                <h2>Update 1.0</h2>
+                                <p>Initial release - basic features.</p>
+                            </div>
+                            <div id="setsScreen">
+                                <h1>Flashcard Sets</h1>
+                                <div id="flashcardGrid" class="iconGrid">
+                                </div>
+                            </div>
+                            <div id="statsScreen">
+                                <h1>Statistics</h1>
+                            </div>
+                            <div id="playSetScreen">
+                                <h3>Active set: <span id="activeSetDisplay">none</span></h3>
+                                <div id="card"></div>
+                                <div>
+                                    <img src="img/leftArrow.svg" class="buttonImg" id="leftButton">
+                                    <img src="img/rotateArrow.svg" class="buttonImg" id="flipButton">
+                                    <img src="img/rightArrow.svg" class="buttonImg" id="rightButton">
+                                </div>
+                                <button id="editButton">Edit</button>
+                                <div id="edit">
+                                    <button id="saveEdit">Save</button>
+                                    <button id="addCard">Add Card</button>
+                                    <table id="editTable">
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div id="tooltip" class="box">This is a tooltip</div>
+        <div class="box" id="editSetPopup">
+            <h2>Edit Set Information</h2>
+            Set name: <input id="newName"><br>
+            Set color: <input type="color" id="newColor"><br>
+            Set logo: <input id="newLogo"><br><br>
+            <div class="setIcon" id="editPreview"></div><br>
+            <button id="saveSetChanges">Save and Exit</button>
+            <button id="deleteSet">Delete Set</button>
+        </div>
+    </div>
+    <footer>
+        Zipcards by <a href="https://monoclethe.github.io/">Jacob Woods</a> | © 2026 | All rights reserved
+    </footer>
+</body>
+</html>
