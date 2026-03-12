@@ -95,11 +95,11 @@ statsButton.onclick = () => {
 flipDurationRange.oninput = () => {
     flipDuration = parseInt(flipDurationRange.value);
     flipDurationDisplay.innerHTML = flipDurationRange.value;
-    setCookie("flipDuration", flipDurationRange.value, 365);
+    setValue("flipDuration", flipDurationRange.value, 365);
 }
 
 launchScreenSelect.oninput = () => {
-    setCookie("launchScreen", launchScreenSelect.value, 365);
+    setValue("launchScreen", launchScreenSelect.value, 365);
 }
 
 editButton.onclick = () => {
@@ -119,7 +119,7 @@ saveEdit.onclick = () => {
     }
     sets[activeSet]["cards"] = newCards;
     sets[activeSet]["edit"] = Date.now();
-    setCookie("sets", sets, 365, true);
+    setValue("sets", sets, 365, true);
 }
 
 addCard.onclick = () => {
@@ -209,7 +209,7 @@ saveSetChanges.onclick = () => {
         editingSet = false;
         editSetPopup.style.display = "none";
         addSets();
-        setCookie("sets", sets, 365, true);
+        setValue("sets", sets, 365, true);
     }
 }
 
@@ -221,7 +221,7 @@ deleteSet.onclick = () => {
     editingSet = false;
     editSetPopup.style.display = "none";
     addSets();
-    setCookie("sets", sets, 365, true);
+    setValue("sets", sets, 365, true);
 }
 
 //functions
@@ -283,40 +283,25 @@ function fitText () {
 }
 
 //cookie handling courtesy of https://www.w3schools.com/js/js_cookies.asp
-function setCookie(cname, cvalue, exdays, jsonType = false) {
+function setValue(cname, cvalue, exdays, jsonType = false) {
     let cookieValue = cvalue;
     if (jsonType) {
         cookieValue = JSON.stringify(cvalue);
     }
-    const d = new Date();
-    d.setTime(d.getTime() + (exdays*24*60*60*1000));
-    let expires = "expires="+ d.toUTCString();
-    document.cookie = cname + "=" + cookieValue + ";" + expires + ";path=/";
+    localStorage.setItem(cname, cookieValue);
 }
 
-function getCookie(cname, jsonType = false) {
-    let name = cname + "=";
-    let decodedCookie = decodeURIComponent(document.cookie);
-    let ca = decodedCookie.split(';');
-    for(let i = 0; i <ca.length; i++) {
-        let c = ca[i];
-        while (c.charAt(0) == ' ') {
-        c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-            if (!jsonType) {
-                return c.substring(name.length, c.length);
-            } else {
-                return JSON.parse(c.substring(name.length, c.length));
-            }
-        
-        }
+function getValue(cname, jsonType = false) {
+    let ca = localStorage.getItem(cname);
+    if (!jsonType) {
+        return ca;
+    } else {
+        return JSON.parse(ca);
     }
-    return null;
 }
 
 function deleteCookie(cname) {
-    setCookie(cname, "none", -1);
+    setValue(cname, "none", -1);
 }
 
 //page setup functions
@@ -397,22 +382,22 @@ function loadSet(set) {
 }
 
 //cookie-dependent variables
-if (getCookie("flipDuration")) {
-    flipDuration = parseInt(getCookie("flipDuration"));
-    flipDurationRange.value = getCookie("flipDuration");
-    flipDurationDisplay.innerHTML = getCookie("flipDuration");
+if (getValue("flipDuration")) {
+    flipDuration = parseInt(getValue("flipDuration"));
+    flipDurationRange.value = getValue("flipDuration");
+    flipDurationDisplay.innerHTML = getValue("flipDuration");
 }
 
-if (getCookie("launchScreen")) {
-    launchScreenSelect.value = getCookie("launchScreen");
-    document.getElementById(getCookie("launchScreen") + "Screen").style.display = "block";
+if (getValue("launchScreen")) {
+    launchScreenSelect.value = getValue("launchScreen");
+    document.getElementById(getValue("launchScreen") + "Screen").style.display = "block";
 } else {
-    setCookie("launchScreen", "title", 365);
+    setValue("launchScreen", "title", 365);
     titleScreen.style.display = "block";
 }
 
-if (getCookie("sets")) {
-    sets = getCookie("sets", true);
+if (getValue("sets")) {
+    sets = getValue("sets", true);
 }
 
 addSets()
